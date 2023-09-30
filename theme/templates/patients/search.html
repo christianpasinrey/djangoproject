@@ -1,0 +1,33 @@
+
+<section id="loaded-results" class="flex flex-col py-6 items-start justify-start">
+    <h1>Resultados de búsqueda</h1>
+    <table class="table-auto w-full">
+        <thead class="app-table-header">
+            <tr class="bg-gray-500 text-gray-50">
+                <th class="text-start px-2">Nombre</th>
+                <th class="text-start">Apellido</th>
+                <th class="text-start">fecha de nacimiento</th>
+                <th class="text-start">Edad</th>
+                <th class="text-start">Sexo</th>
+                <th class="text-start px-2">Fecha de registro</th>
+            </tr>
+        </thead>
+        <tbody id="patients-table-body">
+            {%for patient in patients%}
+            <tr class="bg-slate-50 hover:scale-[1.001] hover:shadow transition-all ease-in-out duration-300">
+                <td class="px-2">
+                    <a href="{% url 'patient' patient.id %}">
+                        {{patient.name}}
+                    </a>
+                </td>
+                <td>{{patient.last_name}}</td>
+                <td>{{patient.birth_date|date:"d/m/Y"}}</td>
+                <td>{{patient.age}}</td>
+                <td>{{patient.gender}}</td>
+                <td class="px-2">{{patient.registered_at|date:"d/m/Y H:m"}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</section>
+
